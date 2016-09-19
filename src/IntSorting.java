@@ -109,6 +109,32 @@ public class IntSorting {
     */
    public static void binaryInsertionSort(int[] a) {
       // TODO!!! Your method here!
+      for (int i = 1; i < a.length; i++) {
+         int beginning = 0;
+         int end = i;
+         int middle = i / 2;
+
+         // Otsin, kuhu paigutada
+         while (beginning < end) {
+            if (a[i] > a[middle]) {
+               beginning = middle + 1;
+            } else if (a[i] < a[middle]) {
+               end = middle;
+            } else {
+               break;
+            }
+
+            middle = beginning + ((end - beginning) / 2);
+         };
+
+         //Liigun õigesse kohta
+         if (middle < i) {
+            int tmp = a[i];
+            for (int j = i - 1; j >= middle; j--)
+               a[j + 1] = a[j];
+            a[middle] = tmp;
+         }
+      }
    }
 
    /**
